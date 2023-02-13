@@ -7,6 +7,7 @@ class App extends Component{
     super(props);
     this.state = {
       frase: "",
+      biscoito: require('./assets/biscoito.png')
     }
 
     this.abreBiscoito = this.abreBiscoito.bind(this);
@@ -30,6 +31,7 @@ class App extends Component{
     let state = this.state;
     let numeroAleatorio = Math.floor(Math.random() * this.frases.length)
 
+    state.biscoito = require('./assets/biscoito-aberto.png')
     state.frase = '"'  + this.frases[numeroAleatorio] + '"';
     this.setState(state);
   }
@@ -37,7 +39,7 @@ class App extends Component{
   render(){
     return(
       <div className='container'>
-        <img src={require('./assets/biscoito.png')} className='container__img'></img>
+        <img src={this.state.biscoito} className='container__img'></img>
         <Botao nome="Abrir biscoito" acaoBtn={this.abreBiscoito}/>
         <h3 className='container__frase' >{this.state.frase}</h3>
       </div>
